@@ -5,5 +5,5 @@ This project performs a comprehensive analysis of a bike store's operations usin
 ## Tools and Technologies
 - **Database**: MySQL
 - **Query Platform**: MySQL Workbench
-- **Data Source**: <a href=" https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/tree/main/Bike%20Store%20Data">Bike Store </a>
+- **Data Source**: <a href="https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/tree/main/Bike%20Store%20Data">Bike Store </a>
 
