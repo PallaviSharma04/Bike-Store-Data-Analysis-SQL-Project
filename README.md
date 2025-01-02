@@ -32,7 +32,7 @@ The database consists of the following interconnected tables:
 ![Database Schema](https://github.com/user-attachments/assets/f9c7bb92-3553-4c45-aa63-9772271c07b7)
 
 ## Data Analysis
-**Q1: Which store contributes the most to the sales?** 
+### Q1: Which store contributes the most to the sales?
 ```sql
 WITH RECURSIVE 
 	rev_per_store AS (
@@ -50,7 +50,7 @@ FROM rev_per_store JOIN sum_re
 
 ![image](https://github.com/user-attachments/assets/6bb1431e-8711-4fe2-9034-6427d65e6064)
 
-**Q2: Which store has the highest number of deliveries that were rejected?**
+### Q2: Which store has the highest number of deliveries that were rejected?
 ```sql
 SELECT count(*) as Rejected_Deliveries , store_name 
 FROM orders o JOIN stores s ON o.store_id=s.store_id
@@ -59,6 +59,24 @@ GROUP BY store_name
 ORDER BY 1 DESC ;
 ```
 *Output*
+
+![image](https://github.com/user-attachments/assets/ab277a51-3c16-44f2-b73f-dc5fd8478258)
+
+### Q3: Which bike categories generate the highest revenue?
+```sql
+SELECT c.category_name,ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) AS tot_rev
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+JOIN categories c ON p.category_id = c.category_id
+GROUP BY c.category_name 
+ORDER BY tot_rev DESC;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/3343eebe-942c-43f7-b00b-f06dcde16a71)
+
+
+
 
 
 ## Business Insights
