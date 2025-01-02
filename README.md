@@ -8,13 +8,15 @@ This project performs a comprehensive analysis of a bike store's operations usin
 - **Data Source**: Public Dataset from <a href="https://www.kaggle.com/datasets/dillonmyrick/bike-store-sample-database?select=orders.csv">Kaggle</a>
            - <a href="https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/tree/main/Bike%20Store%20Data">Bike Store </a>
 - **Data Range** : contains data for three years(2016 to 2018)
-## Key Deliverables:
-The project aims to answer some key <a href="https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/blob/main/Questions.txt">business questions</a> using MySQL such as:
-1.Comprehensive analysis of store performance,customer behaviour and product demand.
-2.Detailed insights into sales trends and staff contributions.
-3.Actionable recommendations for boosting revenue and improving operational efficiency.
 
 ## Data Schema
 
+## Entity Relationship Diagram
+
+## Data Analysis
+
+## Business Insights
+
+## Recommendations
 
 
