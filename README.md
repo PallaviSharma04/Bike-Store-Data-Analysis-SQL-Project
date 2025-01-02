@@ -33,7 +33,7 @@ The database consists of the following interconnected tables:
 
 ## Data Analysis
 <details>
-<summary> Q1: Which store contributes the most to the sales? </summary>
+<summary><h3> Q1: Which store contributes the most to the sales?</h3> </summary>
 <br>
 	
 ```sql
