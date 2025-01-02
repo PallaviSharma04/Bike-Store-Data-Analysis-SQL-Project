@@ -32,7 +32,10 @@ The database consists of the following interconnected tables:
 ![Database Schema](https://github.com/user-attachments/assets/f9c7bb92-3553-4c45-aa63-9772271c07b7)
 
 ## Data Analysis
-### Q1: Which store contributes the most to the sales?
+<details>
+<summary> Q1: Which store contributes the most to the sales? </summary>
+<br>
+	
 ```sql
 WITH RECURSIVE 
 	rev_per_store AS (
@@ -49,6 +52,8 @@ FROM rev_per_store JOIN sum_re
 *Output*
 
 ![image](https://github.com/user-attachments/assets/6bb1431e-8711-4fe2-9034-6427d65e6064)
+
+</details>
 
 ### Q2: Which store has the highest number of deliveries that were rejected?
 ```sql
