@@ -5,32 +5,16 @@ This project performs a comprehensive analysis of a bike store's operations usin
 ## Tools and Technologies
 - **Database**: MySQL
 - **Query Platform**: MySQL Workbench
-- **Data Source**: <a href="https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/tree/main/Bike%20Store%20Data">Bike Store </a>
+- **Data Source**: Public Dataset from <a href="https://www.kaggle.com/datasets/dillonmyrick/bike-store-sample-database?select=orders.csv">Kaggle</a>
+           - <a href="https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/tree/main/Bike%20Store%20Data">Bike Store </a>
+- **Data Range** : contains data for three years(2016 to 2018)
 ## Key Deliverables:
-The project aims to answer the following business questions using MySQL:
+The project aims to answer some key <a href="https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/blob/main/Questions.txt">business questions</a> using MySQL such as:
+1.Comprehensive analysis of store performance,customer behaviour and product demand.
+2.Detailed insights into sales trends and staff contributions.
+3.Actionable recommendations for boosting revenue and improving operational efficiency.
 
-Q1:Which store contributes the most to the sales?
+## Data Schema
 
-Q2: Which store has the highest number of deliveries that were rejected? 
 
-Q3: Which bike categories generate the highest revenue?
-
-Q4: Which is the most expensive bike category on an average?
-
-Q5: Which months record the highest number of orders, and which store is responsible for the largest share of these orders?
-
-Q6: What is the progression of revenue over time for each category and which categories show significant growth decline?  
-
-Q7: Which are the top 5 customers based on sales?
-
-Q8: Write a query that returns the store name and staff name who has generated the most revenue of top 3 best selling bike categories. 
-
-Q9: Find how much amount spent by each customer on best-selling bike category.
-
-Q10: We want to find out the most popular bike category for each store. We determine the most popular  bike category as the one with the highest amount of purchases. Write a query that 
-returns each store along with the top category.
-
-Q11: Write a query to track the number of units sold over time for each brand, reflecting consumer demand trends.
-
-Q12: What is the total number of deliveries made on time, how many were delivered after the required date? What percentage of deliveries were punctual v/s delayed?  
 
