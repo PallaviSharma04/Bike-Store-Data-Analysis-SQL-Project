@@ -32,10 +32,115 @@ The database consists of the following interconnected tables:
 ![Database Schema](https://github.com/user-attachments/assets/f9c7bb92-3553-4c45-aa63-9772271c07b7)
 
 ## Data Analysis
+### 1. Sales Trends
 <details>
-<summary><h3> Q1: Which store contributes the most to the sales?</h3> </summary>
+<summary>Click to view</summary>
+<br>
+
+**Q1: Which months record the highest number of orders, and which store is responsible for the largest share of these orders?**
+```sql
+	WITH cte AS
+		(
+		SELECT COUNT(order_id) AS No_of_orders ,MONTHNAME(order_date) AS Month
+		FROM orders
+		GROUP BY Month
+		ORDER BY No_of_orders DESC
+		),
+		cte2 AS
+		(
+		SELECT count(orders.order_id) No_of_orders, monthname(orders.order_date) Month, stores.store_name, 
+		RANK()OVER(PARTITION BY monthname(orders.order_date) ORDER BY count(orders.order_id) DESC) AS rnk
+		FROM orders JOIN stores
+		ON orders.store_id=stores.store_id
+		GROUP BY stores.store_name,Month
+		ORDER BY Month
+		)
+	SELECT cte.*,cte2.store_name AS Store_with_max_orders
+	FROM cte JOIN cte2 ON cte.Month=cte2.Month
+	WHERE cte2.rnk=1
+	ORDER BY 1 DESC ;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/25d20ee0-7cef-4c3a-8eef-39a7bea461c1)
+
+**Q2: What is the progression of revenue over time for each category and which categories show significant growth decline?**
+```sql
+	SELECT year(o.order_date) as year,c.category_name,ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) AS tot_rev
+	FROM orders o JOIN order_items oi ON o.order_id=oi.order_id 
+	JOIN products p ON oi.product_id=p.product_id
+	JOIN categories c ON c.category_id=p.category_id
+	GROUP BY c.category_name,year
+	ORDER BY c.category_name DESC,year ASC; 
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/8d294f5a-2587-4d8a-ab9b-04a98026f5ce)
+</details>
+
+### 2. Product & Category Analysis
+<details>
+<summary>Click to view</summary>
 <br>
 	
+**Q3: Which bike categories generate the highest revenue?**
+```sql
+SELECT c.category_name,ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) AS tot_rev
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+JOIN categories c ON p.category_id = c.category_id
+GROUP BY c.category_name 
+ORDER BY tot_rev DESC;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/3343eebe-942c-43f7-b00b-f06dcde16a71)
+
+**Q4: Which is the most expensive bike category on an average?**
+```sql
+	WITH cte AS
+		(      
+		SELECT c.category_name,SUM(p.list_price) AS price
+		FROM products p JOIN categories c
+		ON p.category_id=c.category_id
+		GROUP BY c.category_name
+		ORDER BY price DESC
+    		),
+		num AS 
+		(
+		SELECT c.category_name,COUNT(p.product_id) AS cn 
+		FROM products p JOIN categories c
+		ON p.category_id=c.category_id
+		GROUP BY c.category_name
+		)
+	SELECT cte.category_name,round((cte.price/num.cn ),2) AS avg_price
+	FROM cte JOIN num ON cte. category_name=num.category_name
+	ORDER BY avg_price DESC;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/fbc7ddeb-0834-4509-be8a-fd978d17c835)
+
+**Q5: Write a query to track the number of units sold over time for each brand, reflecting consumer demand trends.**
+```sql
+	SELECT YEAR(o.order_date) as year, b.brand_name, SUM(oi.quantity) as No_of_units_sold
+	FROM orders o JOIN order_items oi ON o.order_id=oi.order_id
+	JOIN products p ON p.product_id=oi.product_id
+	JOIN brands b ON b.brand_id=p.brand_id
+	GROUP BY b.brand_name,year
+	ORDER BY b.brand_name DESC,year ASC;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/bda562e4-e115-41cf-a963-27e04547ddfe)
+</details>
+
+### 3. Staff & Store Performance
+<details>
+<summary>Click to view</summary>
+<br>
+
+**Q6: Which store contributes the most to the sales?**
 ```sql
 WITH RECURSIVE 
 	rev_per_store AS (
@@ -53,9 +158,7 @@ FROM rev_per_store JOIN sum_re
 
 ![image](https://github.com/user-attachments/assets/6bb1431e-8711-4fe2-9034-6427d65e6064)
 
-</details>
-
-### Q2: Which store has the highest number of deliveries that were rejected?
+**Q7: Which store has the highest number of deliveries that were rejected?**
 ```sql
 SELECT count(*) as Rejected_Deliveries , store_name 
 FROM orders o JOIN stores s ON o.store_id=s.store_id
@@ -67,19 +170,54 @@ ORDER BY 1 DESC ;
 
 ![image](https://github.com/user-attachments/assets/ab277a51-3c16-44f2-b73f-dc5fd8478258)
 
-### Q3: Which bike categories generate the highest revenue?
+**Q8: Write a query that returns the store name and staff name who has generated the most revenue of top 3 best selling bike categories.**
 ```sql
-SELECT c.category_name,ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) AS tot_rev
-FROM order_items oi
-JOIN products p ON oi.product_id = p.product_id
-JOIN categories c ON p.category_id = c.category_id
-GROUP BY c.category_name 
-ORDER BY tot_rev DESC;
+	WITH best_selling_category AS
+		(SELECT categories.category_id,categories.category_name,SUM(order_items.quantity) AS No_of_units_sold
+		FROM order_items
+		JOIN products ON order_items.product_id = products.product_id
+		JOIN categories ON products.category_id = categories.category_id
+		GROUP BY categories.category_name,categories.category_id
+		ORDER BY No_of_units_sold DESC
+		LIMIT 3),
+	CTE AS 
+		(SELECT sto.store_name,CONCAT(sta.first_name,' ',sta.last_name) AS staff_name,
+		ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) as sales,c.category_name,
+		RANK()OVER(PARTITION BY c.category_name ORDER BY ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) DESC) as rnk
+		FROM orders o JOIN stores sto ON o.store_id=sto.store_id
+		JOIN staffs sta ON sta.staff_id=o.store_id
+		JOIN order_items oi ON oi.order_id=o.order_id
+		JOIN products p on p.product_id=oi.product_id
+		JOIN categories c on p.category_id=c.category_id
+		WHERE p.category_id in (SELECT category_id FROM best_selling_category)
+		GROUP BY store_name,staff_name,c.category_name)
+	SELECT  best_selling_category.category_name,store_name,staff_name,sales 
+	FROM CTE JOIN best_selling_category ON cte.category_name=best_selling_category.category_name
+	WHERE rnk=1 
+	ORDER BY sales DESC; 
 ```
 *Output*
 
-![image](https://github.com/user-attachments/assets/3343eebe-942c-43f7-b00b-f06dcde16a71)
+![image](https://github.com/user-attachments/assets/7f618b67-2cec-4e01-8d4e-cf012749b2a9)
 
+**Q9: We want to find out the most popular bike category for each store. We detemine the most popular  bike category as the one with the highest amount of purchases. Write a query that returns each store along with the top category.**
+```sql
+	WITH CTE AS 
+	(SELECT st.store_name,c.category_name AS most_popular_category,SUM(oi.quantity) AS no_of_units_sold,
+	RANK()OVER(PARTITION BY st.store_name ORDER BY SUM(oi.quantity) DESC) AS rnk 
+	FROM orders o JOIN stores st ON o.store_id=st.store_id
+	JOIN order_items oi ON oi.order_id=o.order_id
+	JOIN products p on p.product_id=oi.product_id
+	JOIN categories c on c.category_id=p.category_id
+	GROUP BY st.store_name,c.category_name
+	ORDER BY 1, 3 DESC)
+	SELECT store_name,most_popular_category,no_of_units_sold
+	FROM CTE WHERE rnk=1;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/7025fbea-a9c2-4ae0-8435-2b49014e9b8c)
+</details>
 
 
 
