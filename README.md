@@ -17,10 +17,10 @@ This project performs a comprehensive analysis of a bike store's operations usin
 - **Data Range** : Jan 2016 to Dec 2018
 
 ## Analytical Approach
-1.**Data Exploration**: Reviewed the relational schema and relationships.
-2.**Query Development**: Formulated SQL queries to answer key business questions.
-3.**Insight Extraction**: Interpreted query results to derive actionable insights.
-4.**Reporting**: Compiled findings and recommendations into a structured format.
+- **Data Exploration**: Reviewed the relational schema and relationships.
+- **Query Development**: Formulated SQL queries to answer key business questions.
+- **Insight Extraction**: Interpreted query results to derive actionable insights.
+- **Reporting**: Compiled findings and recommendations into a structured format.
 
 ## Data Schema
 The database consists of the following interconnected tables:
@@ -311,11 +311,11 @@ The following insights were derived from the analysis:
 - **Cruiser Bicycle** is the best selling category for each store.
 - The staff who contibuted the most in generating revenue for the top 3 best selling categories is **Mireya Copeland** from the store **Baldwin Bikes**.
 
-## Customer Insights:
+### Customer Insights:
 - **Top 5 customers by sales** are Sharyn,Pamelia,Abby,Lyndsey and Emmitt.
 - **Emmitt** spent the most on **Cruisers Bicycles**, the best selling category.
 
-## Delivery Insights
+### Delivery Insights
 - Of the total **1,445 completed deliveries**:
   	- **68%** were punctual
   	- **32%** were delayed.
