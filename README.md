@@ -219,8 +219,73 @@ ORDER BY 1 DESC ;
 ![image](https://github.com/user-attachments/assets/7025fbea-a9c2-4ae0-8435-2b49014e9b8c)
 </details>
 
+### 4. Customer Insights
+<details>
+<summary>Click to view</summary>
+<br>
 
+**Q10: Which are the top 5 customers based on sales?**
+```sql
+	SELECT c.customer_id, CONCAT(c.first_name,' ',c.last_name) AS full_name,
+	ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) AS sales
+	FROM  orders o JOIN customers c ON o.customer_id=c.customer_id
+	JOIN order_items oi ON oi.order_id=o.order_id
+	GROUP BY full_name,c.customer_id
+	ORDER BY sales DESC
+	LIMIT 5;
+```
+*Output*
 
+![image](https://github.com/user-attachments/assets/f9be5bed-3d8c-43a5-9396-91faf39302b6)
+
+**Q11: Find how much amount spent by each customer on best_selling bike category. Output top 5 rows.**
+```sql
+	SELECT c.customer_id, CONCAT(c.first_name,' ',c.last_name) AS full_name,
+	ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) AS sales
+	FROM  orders o JOIN customers c ON o.customer_id=c.customer_id
+	JOIN order_items oi ON oi.order_id=o.order_id
+	WHERE oi.product_id in 
+	(SELECT p.product_id FROM products p JOIN categories c on p.category_id=c.category_id 
+	WHERE c.category_id =3)
+	GROUP BY full_name,c.customer_id
+	ORDER BY sales DESC
+	LIMIT 5;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/15728786-eeb4-4d74-a926-92700da8f801)
+</details>
+
+### 5. Delivery Insights
+<details>
+<summary>Click to view</summary>
+<br>
+
+**Q12: What is the total number of deliveries made on time, how many were delivered after the required date? What percentage of deliveries were punctual v/s delayed?**
+```sql
+ 	WITH RECURSIVE deliveries AS
+		(SELECT  *,
+			CASE WHEN required_date >= shipped_date AND shipped_date IS NOT NULL
+			THEN 'Punctual'
+			WHEN required_date < shipped_date AND shipped_date IS NOT NULL
+			THEN 'Delayed'
+			END AS type
+		FROM orders),
+        perc AS 
+        	(SELECT 
+			SUM(CASE WHEN order_status=4 then 1 else 0 END) AS Total_Completed_Deliveries,
+            		SUM(CASE WHEN type='Punctual' then 1 else 0 END) AS Punctual_Deliveries,
+            		SUM(CASE WHEN type='Delayed' then 1 else 0 END) AS Delayed_Deliveries
+		FROM deliveries)
+	SELECT Total_Completed_Deliveries,
+	CONCAT(Punctual_Deliveries,' ( ',ROUND(100*(Punctual_Deliveries/Total_Completed_Deliveries)),'% )') AS Punctual_deliveries,
+	CONCAT(Delayed_Deliveries,' ( ',ROUND(100*(Delayed_Deliveries/Total_Completed_Deliveries)),'% )') AS Delayed_deliveries
+	FROM perc;
+```
+*Output*
+
+![image](https://github.com/user-attachments/assets/635fe50d-ec40-4021-ad97-483a39d815f1)
+</details>
 
 ## Business Insights
 
