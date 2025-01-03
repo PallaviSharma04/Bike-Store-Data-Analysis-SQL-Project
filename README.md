@@ -288,6 +288,12 @@ ORDER BY 1 DESC ;
 </details>
 
 ## Business Insights
+The following insights were derived from the analysis:
+### Sales Trends:
+- **April & March** recorded the highest number of orders.
+- **Electric Bikes** sales are consistently rising, while **Comfort Bicycles** peaked in 2017 but declined in 2018. Sales for all other categories are declining.
+
+### 
 
 ## Recommendations
 
