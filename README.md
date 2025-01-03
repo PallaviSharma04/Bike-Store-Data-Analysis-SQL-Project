@@ -1,5 +1,17 @@
 # 🚲 Bike Store Data Analysis Using MYSQL
 ## Table of Contents
+- [Project Overview](#project-overview)
+- [Goals](#goals)
+- [Tools & Technology](#tools-and-technologies)
+- [Analytical Approach](#analytical-approach)
+- [Data Schema](#data-schema)
+- [ERD](#entity-relationship-diagram)
+- [Data Analysis](#data-analysis)
+- [Business Insights](#business-insights)
+- [Recommendations](#recommendations)
+
+
+
 ## Project Overview
 This project performs a comprehensive analysis of a bike store's operations using MYSQL. The project aims to uncover insights and trends and provide recommendations for improving store performance and customer satisfaction. The project includes advanced SQL concepts, such as Window Functions, Common Table Expressions(CTEs),etc. to enhance the depth and efficiency of the queries.
 
@@ -326,5 +338,6 @@ The following insights were derived from the analysis:
 - **Focus on Electric Bikes**: Their rising sales indicate growing customer demand.
 - **Improve Delivery Efficiency**: Address delays to improve customer satisfaction.
 - **Recognize High Performing Staff**: Encourage and reward top performers like Mireya Copeland.
+- **Leverage Peak Season (March & April)**: Ensure high demand products are well stocked to meet increased customer interest and introduce seasonal promotions and offers to attract new customers and encourage repeat business.
 
 
