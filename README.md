@@ -291,9 +291,12 @@ ORDER BY 1 DESC ;
 The following insights were derived from the analysis:
 ### Sales Trends:
 - **April & March** recorded the highest number of orders.
-- **Electric Bikes** sales are consistently rising, while **Comfort Bicycles** peaked in 2017 but declined in 2018. Sales for all other categories are declining.
+- **Electric Bikes** sales are consistently rising, while **Comfort Bicycles** & **Children Bicycles** peaked in 2017 but declined in 2018. Sales for all other categories are declining.
 
-### 
+### Product Category & Brand Insights:
+- **Mountain Bikes** generated the highest revenue of **$2.72M** followed by Road Bikes and Cruiser Bicycles.
+- **Electric Bikes** are the most expensive category followed by Road Bikes and Cyclocross Bikes.
+- **Cruiser Bicycles,Mountain Bikes and Children Bicycles** are the three most sold categories.
 
 ## Recommendations
 
