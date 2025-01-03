@@ -294,9 +294,19 @@ The following insights were derived from the analysis:
 - **Electric Bikes** sales are consistently rising, while **Comfort Bicycles** & **Children Bicycles** peaked in 2017 but declined in 2018. Sales for all other categories are declining.
 
 ### Product Category & Brand Insights:
-- **Mountain Bikes** generated the highest revenue of **$2.72M** followed by Road Bikes and Cruiser Bicycles.
-- **Electric Bikes** are the most expensive category followed by Road Bikes and Cyclocross Bikes.
+- **Mountain Bikes** generated the highest revenue of **$2.72M** followed by **Road Bikes** and **Cruiser Bicycles**.
+- **Electric Bikes** are the most expensive category followed by **Road Bikes** and **Cyclocross Bikes**.
 - **Cruiser Bicycles,Mountain Bikes and Children Bicycles** are the three most sold categories.
+- **Trek** brand sales increased in 2017, then declined in 2018. All other brands show a steady decline from 2016 to 2018.
+
+### Store & Staff Contributions:
+- **Baldwin Bikes** store contributes the most to total revenue(**68%**), followed by **Santa Cruz Bikes (21%)** and **Rowlett Bikes (11%)**.
+- **Rowlett Bikes** has the highest number of **rejected deliveries**, followed by Baldwin Bikes and Santa Cruz Bikes. 
+- **Cruiser Bicycle** is the best selling category for each store.
+
+## Customer Insights:
+- **Top 5 customers by sales** are Sharyn,Pamelia,Abby,Lyndsey and Emmitt.
+- **Emmitt** spent the most on **Cruisers Bicycles**, the best selling category.
 
 ## Recommendations
 
