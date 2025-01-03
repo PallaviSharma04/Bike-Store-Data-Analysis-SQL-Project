@@ -290,7 +290,7 @@ ORDER BY 1 DESC ;
 ## Business Insights
 The following insights were derived from the analysis:
 ### Sales Trends:
-- **April & March** recorded the highest number of orders.
+- **April & March** recorded the highest number of orders and the majority of the orders were processed by Baldwin Bikes one of the three branches.
 - **Electric Bikes** sales are consistently rising, while **Comfort Bicycles** & **Children Bicycles** peaked in 2017 but declined in 2018. Sales for all other categories are declining.
 
 ### Product Category & Brand Insights:
@@ -303,11 +303,22 @@ The following insights were derived from the analysis:
 - **Baldwin Bikes** store contributes the most to total revenue(**68%**), followed by **Santa Cruz Bikes (21%)** and **Rowlett Bikes (11%)**.
 - **Rowlett Bikes** has the highest number of **rejected deliveries**, followed by Baldwin Bikes and Santa Cruz Bikes. 
 - **Cruiser Bicycle** is the best selling category for each store.
+- The staff who contibuted the most in generating revenue for the top 3 best selling categories is **Mireya Copeland** from the store **Baldwin Bikes**.
 
 ## Customer Insights:
 - **Top 5 customers by sales** are Sharyn,Pamelia,Abby,Lyndsey and Emmitt.
 - **Emmitt** spent the most on **Cruisers Bicycles**, the best selling category.
 
+## Delivery Insights
+- Of the total **1,445 completed deliveries**:
+  	- **68%** were punctual
+  	- **32%** were delayed.
+
 ## Recommendations
+- **Invest in Baldwin Bikes**: Maximize inventory and marketing for the top-performing store.
+- **Promote Mountain Bikes and Cruiser Bicycles**: These are the most popular categories in terms of revenue generation and number of sold items.
+- **Focus on Electric Bikes**: Their rising sales indicate growing customer demand.
+- **Improve Delivery Efficiency**: Address delays to improve customer satisfaction.
+- **Recognize High Performing Staff**: Encourage and reward top performers like Mireya Copeland.
 
 
