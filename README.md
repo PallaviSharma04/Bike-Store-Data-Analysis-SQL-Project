@@ -16,6 +16,12 @@ This project performs a comprehensive analysis of a bike store's operations usin
            - <a href="https://github.com/PallaviSharma04/Bike-Store-Data-Analysis-SQL-Project/tree/main/Bike%20Store%20Data">Bike Store </a>
 - **Data Range** : Jan 2016 to Dec 2018
 
+## Analytical Approach
+1.**Data Exploration**: Reviewed the relational schema and relationships.
+2.**Query Development**: Formulated SQL queries to answer key business questions.
+3.**Insight Extraction**: Interpreted query results to derive actionable insights.
+4.**Reporting**: Compiled findings and recommendations into a structured format.
+
 ## Data Schema
 The database consists of the following interconnected tables:
 - **Customers**: Stores customer details and location information.
