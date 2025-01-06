@@ -155,7 +155,7 @@ GROUP BY full_name,c.customer_id
 ORDER BY sales DESC
 LIMIT 5;
 
-/* Q11: Find how much amount spent by each customer on best_selling bike category. */
+/* Q11: Find how much amount spent by each customer on best_selling bike category. Output top 5 rows. */
 
 SELECT c.customer_id, CONCAT(c.first_name,' ',c.last_name) AS full_name,
 ROUND(SUM((oi.quantity*oi.list_price)*(1-oi.discount)),2) AS sales
@@ -163,7 +163,8 @@ FROM  orders o JOIN customers c ON o.customer_id=c.customer_id
 JOIN order_items oi ON oi.order_id=o.order_id
 WHERE oi.product_id in (SELECT p.product_id FROM products p JOIN categories c on p.category_id=c.category_id WHERE c.category_id =3)
 GROUP BY full_name,c.customer_id
-ORDER BY sales DESC;
+ORDER BY sales DESC
+LIMIT 5;
 
 -- V. DELIVERY INSIGHTS
 -- **********************
