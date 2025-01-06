@@ -26,7 +26,7 @@ IV. CUSTOMER INSIGHTS
 -----------------------
 Q10: Which are the top 5 customers based on sales?
 
-Q11: Find how much amount spent by each customer on best-selling bike category.
+Q11: Find how much amount spent by each customer on best-selling bike category. Output top 5 rows.
 
 V. DELIVERY INSIGHTS
 ----------------------
