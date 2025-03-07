@@ -1,4 +1,6 @@
 # 🚲 Bike Store Data Analysis Using MYSQL
+<img align="center" width="700" height="400" src="https://github.com/user-attachments/assets/f579c4b1-259c-400e-ab7e-7b087bf0f7e1">
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Goals](#goals)
